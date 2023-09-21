@@ -11,9 +11,7 @@ class TestApp:
     def test_can_only_access_member_only_while_logged_in(self):
         '''allows logged in users to access member-only article index at /members_only_articles.'''
         with app.test_client() as client:
-            
             client.get('/clear')
-
             user = User.query.first()
             client.post('/login', json={
                 'username': user.username
